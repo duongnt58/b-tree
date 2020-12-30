@@ -1,15 +1,15 @@
 # btree-js
-Demo: **[JS BTree](http://yangez.github.io/btree-js/)**
+Demo: **[BTree](https://github.com/duongnt58/b-tree)**
 
-This is [Allen Chang](https://allendevelops.wordpress.com) and [Eric Yang](http://www.eric-y.com)'s javascript implementation for [B-tree](https://en.wikipedia.org/wiki/B-tree) of order 3 and above.
+Javascript thực hiện cài đặt cấu trúc cây [B-tree](https://en.wikipedia.org/wiki/B-tree) từ 3 khóa trở lên.
+ 
+Tại đây chúng ta có thế tìm kiếm hoặc thêm mới một note. Thuật toán thêm mới một note như sau:
 
-Currently we can `search` and `insert`. We derived our own insert algorithm as follows:
+1. Duyệt qua cây để tìm kiếm được đúng lá để chèn giá trị.
+2. Chèn thêm một giá trị vào nút lá.
+    * Nếu nút đang duyệt qua còn khoảng trống thì chèn giá trị vào nút đó.
+    * Nếu nút đang duyệt đã đủ phần tử và nút đó là nút gốc thì tách nút và tạo nút cha mới.
+    * Nếu nút đang duyệt đã đủ phần tử và đang là nút cha thì chia nút và chèn thêm phần tử vào nút cha. Duyệt lại nút cha và lặp lại cho đến khi các nút đủ phần tử.
+3. Quay lại tất cả các đường và kết nối tất cả các nút tách với các nút cha mẹ thích hợp.
 
-1. Traverse the b-tree for the correct leaf to insert the value.
-2. Insert value into leaf.
-  * If the node has space, simply insert the value and we're done.
-  * If node overflows and it's root, split the node and create a new parent with the median.
-  * If node overflows and has a parent, split the node and insert the median into the parent. Go up to parent and repeat step 2 until it doesn't overflow.
-3. Go back all the way down and connect all the split nodes to the appropriate parents.
-
-It turns out that there's a more efficient algorithm where you don't have to go up and back down, but ours still works fine.
+Via: [Allen Chang](https://allendevelops.wordpress.com) and [Eric Yang](http://www.eric-y.com).
